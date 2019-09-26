@@ -19,7 +19,7 @@ context('Location', () => {
       expect(location.hostname).to.eq('localhost')
       expect(location.origin).to.eq('http://localhost:8090')
       expect(location.pathname).to.eq('/commands/location')
-      expect(location.port).to.eq('8080')
+      expect(location.port).to.eq('8090')
       expect(location.protocol).to.eq('http:')
       expect(location.search).to.be.empty
     })
