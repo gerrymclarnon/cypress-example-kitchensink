@@ -58,13 +58,13 @@ pipeline {
       steps {
         // start local server in the background
         // we will shut it down in "post" command block
-        sh 'nohup npm run start:ci &'
+        // sh 'nohup npm run start:ci &'
       }
     }
 
     // this stage runs end-to-end tests, and each agent uses the workspace
     // from the previous stage
-    stage('cypress parallel tests') {
+    stage('cypress NON-parallel tests') {
       environment {
         // we will be recording test results and video on Cypress dashboard
         // to record we need to set an environment variable
@@ -76,7 +76,11 @@ pipeline {
         CYPRESS_trashAssetsBeforeRuns = 'false'
       }
 
+      sh "npm run test:ci"
+
+
       // https://jenkins.io/doc/book/pipeline/syntax/#parallel
+/*
       parallel {
         // start several test jobs in parallel, and they all
         // will use Cypress Dashboard to load balance any found spec files
@@ -95,7 +99,7 @@ pipeline {
           }
         }
       }
-
+*/
     }
   }
 
