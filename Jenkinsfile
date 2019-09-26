@@ -83,7 +83,7 @@ pipeline {
         stage('tester A') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:parallel"
           }
         }
 
@@ -91,7 +91,7 @@ pipeline {
         stage('tester B') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:parallel"
           }
         }
       }
@@ -102,8 +102,8 @@ pipeline {
   post {
     // shutdown the server running in the background
     always {
-      echo 'NOT Stopping local server'
-      // sh 'pkill -f http-server'
+      echo 'Stopping local server'
+      sh 'pkill -f http-server'
     }
   }
 }
