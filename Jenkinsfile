@@ -102,8 +102,8 @@ pipeline {
   post {
     // shutdown the server running in the background
     always {
-      echo 'Stopping local server'
-      sh 'pkill -f http-server'
+      echo 'NOT Stopping local server'
+      // sh 'pkill -f http-server'
     }
   }
 }
