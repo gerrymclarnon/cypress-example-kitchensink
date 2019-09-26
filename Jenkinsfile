@@ -58,7 +58,7 @@ pipeline {
       steps {
         // start local server in the background
         // we will shut it down in "post" command block
-        // sh 'nohup npm run start:ci &'
+        sh 'nohup npm run start:ci &'
       }
     }
 
@@ -76,7 +76,9 @@ pipeline {
         CYPRESS_trashAssetsBeforeRuns = 'false'
       }
 
-      sh "npm run test:ci"
+      steps {
+        sh "npm run e2e"
+      }
 
 
       // https://jenkins.io/doc/book/pipeline/syntax/#parallel
